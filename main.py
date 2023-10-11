@@ -1,11 +1,20 @@
 import json
 from nodemanager import NodeManager
+from consoledisplay import ConsoleDisplay
+
+json_file = 'data.json'
+
+#TODO: Node operations
+#TODO: Node Visualisation
+#TODO: Graph algorithms?
 
 if __name__ == "__main__":
-    with open('data.json', 'r+') as file:
-        data = json.load(file)
-        NodeManager.add_node("G", ["A", "A", "G", "G"], 'data.json')
-        #delete_node("G", 'data.json')
-        #delete_connection("G", "R", "data.json")
-        for node, neighbors in data.items():
-            print(f"Node {node} is connected to: {neighbors}")    
+    
+    #NodeManager.add_node("G", ["A", "A", "G", "G"], json_file)
+    #NodeManager.delete_node("G", json_file)
+    #NodeManager.delete_connection("G", "R", json_file)
+    #ConsoleDisplay.display_basic(json_file)  
+    ConsoleDisplay.display_matrix(json_file)  
+    
+    with open(json_file, 'r+') as file:
+        pass
