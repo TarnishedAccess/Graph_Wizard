@@ -31,6 +31,6 @@ class ConsoleDisplay:
                 for j in range(len(matrix[i])):
                     if nodes[j] in data.get(nodes[i]):
                         matrix[i][j] = 1 
-                        matrix[j][i] = -1
+                        #matrix[j][i] = -1
         df = pandas.DataFrame(matrix, columns=nodes, index=nodes)
         print(df)
