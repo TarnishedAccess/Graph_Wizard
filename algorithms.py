@@ -63,11 +63,12 @@ class Algorithms:
         return result
     
 
-    def composantes_connexes(data): 
+    def composantes_connexes_faible(data): 
 
         result = []
         for node in data:
             if node not in [item for sublist in result for item in sublist]:
+                #sum(result, [])
                 component = Algorithms.parcours_profondeur(node, data)
                 result.append(component)
         return result
