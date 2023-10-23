@@ -6,9 +6,6 @@ import json
 
 json_file = 'data.json'
 
-#BUG: When deleting a node, make sure to delete all connections LEADING to it
-#{"A": ["B", "C"], "B": ["D"], "C": ["F"], "D": [], "F": [], "X": ["Y"], "Y": []}
-#Example: Deleting F here should also delete the connection from C
 #TODO: Node Visualisation
 #TODO: Fortement connexe, Tri topologie
 #TODO: values, 8, 9, 10, 11

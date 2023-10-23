@@ -29,6 +29,8 @@ class NodeManager:
 
         #if the node exists, we remove it.
         if node in data:
+            for node_traverse in data:
+                NodeManager.delete_connection(node_traverse, node, data)
             data.pop(node)
         return data
                 
