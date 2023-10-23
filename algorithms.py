@@ -2,9 +2,7 @@ import json
 
 class Algorithms:
 
-    def parcours_largeur(starting_point, storage_file):
-        with open(storage_file, 'r') as file:
-            data = json.load(file)
+    def parcours_largeur(starting_point, data):
 
         marked = [starting_point]
         working_file = [starting_point]
@@ -32,9 +30,7 @@ class Algorithms:
             working_file.pop(0)
         return result
         
-    def parcours_profondeur(starting_point, storage_file):
-        with open(storage_file, 'r') as file:
-            data = json.load(file)
+    def parcours_profondeur(starting_point, data):
 
         marked = []
         working_file = [starting_point]
@@ -67,16 +63,11 @@ class Algorithms:
         return result
     
 
-    def composantes_connexes(storage_file):
-        
-        with open(storage_file, 'r') as file:
-            data = json.load(file)
+    def composantes_connexes(data): 
 
         result = []
-
         for node in data:
             if node not in [item for sublist in result for item in sublist]:
-                component = Algorithms.parcours_profondeur(node, storage_file)
+                component = Algorithms.parcours_profondeur(node, data)
                 result.append(component)
-
         return result
