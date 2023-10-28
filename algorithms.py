@@ -1,5 +1,3 @@
-import json
-
 class Algorithms:
 
     def parcours_largeur(starting_point, data):

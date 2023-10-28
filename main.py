@@ -6,9 +6,8 @@ import json
 
 json_file = 'data.json'
 
-#TODO: Node Visualisation
 #TODO: Fortement connexe, Tri topologie
-#TODO: values, 8, 9, 10, 11
+#TODO: values, 8, 9, 10, 11 (what the fuck does this mean)
 
 #{"A": ["B", "C", "F"], "B": ["F"], "C": ["D"], "D": ["F", "E"], "E": ["F"], "F": ["G"], "G": []}
 #{"A": ["B", "C"], "B": ["D"], "C": ["F"], "D": [], "F": []}

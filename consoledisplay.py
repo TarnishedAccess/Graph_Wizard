@@ -1,8 +1,9 @@
-import json
 import pandas
 
 class ConsoleDisplay:
     
+    #TODO: Node Visualisation
+
     def display_basic(data):
         for node, neighbors in data.items():
             print(f"Node {node} is connected to: {neighbors}")    

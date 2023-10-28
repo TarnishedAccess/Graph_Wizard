@@ -1,5 +1,3 @@
-import json
-
 class NodeManager:
     
     def add_node(node, connections, data):
