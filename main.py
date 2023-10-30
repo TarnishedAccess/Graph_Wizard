@@ -6,11 +6,12 @@ import json
 
 json_file = 'data.json'
 
-#TODO: Fortement connexe, Tri topologie
+#TODO: Fortement connexe
 #TODO: values, 8, 9, 10, 11 (what the fuck does this mean)
 
 #{"A": ["B", "C", "F"], "B": ["F"], "C": ["D"], "D": ["F", "E"], "E": ["F"], "F": ["G"], "G": []}
 #{"A": ["B", "C"], "B": ["D"], "C": ["F"], "D": [], "F": []}
+#{"A": ["B", "C"], "B": ["D"], "C": [], "D": [], "X": ["Y"], "Y": []}
 
 with open(json_file, 'r') as file:
     data = json.load(file)
@@ -20,7 +21,7 @@ graph = data.copy()
 if __name__ == "__main__":
     
     #NodeManager.add_node("W", ["A"], graph)
-    NodeManager.delete_node("F", graph)
+    #NodeManager.delete_node("F", graph)
     #NodeManager.delete_connection("G", "R", graph)
     #ConsoleDisplay.display_basic(graph)  
     #ConsoleDisplay.display_matrix(graph) 
@@ -30,6 +31,8 @@ if __name__ == "__main__":
     #print(Algorithms.parcours_largeur('A', graph))
     #print(Algorithms.parcours_profondeur('A', graph))
     #print(Algorithms.composantes_connexes_faible(graph))
+    Algorithms.tritopologie(graph)
 
+"""
     with open(json_file, 'w') as file:
-        json.dump(graph, file)
+        json.dump(graph, file)"""

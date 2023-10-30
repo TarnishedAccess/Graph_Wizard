@@ -1,3 +1,5 @@
+from nodemanager import NodeManager
+
 class Algorithms:
 
     def parcours_largeur(starting_point, data):
@@ -70,3 +72,22 @@ class Algorithms:
                 component = Algorithms.parcours_profondeur(node, data)
                 result.append(component)
         return result
+
+    def tritopologie(data):
+        levels = []
+        total_nodes = list(data.keys())
+        while total_nodes:
+            nodes_list = total_nodes.copy()
+            for node_1 in data:
+                for node_2 in data:
+                    for connection in data.get(node_2, []):
+                        if connection == node_1:
+                            try:
+                                nodes_list.remove(connection)
+                            except ValueError:
+                                pass
+            levels.append(nodes_list)
+            for node in nodes_list:
+                total_nodes.remove(node)
+                del data[node]
+        print(levels)
