@@ -2,77 +2,51 @@ from nodemanager import NodeManager
 
 class Algorithms:
 
-    def parcours_largeur(starting_point, data):
-
-        marked = [starting_point]
-        working_file = [starting_point]
+    @staticmethod
+    def parcours_largeur(starting_node, nodes):
+        marked = [starting_node]
+        working_queue = [starting_node]
         result = []
 
-        """
-        #A little too easy?
-        for node in working_file:
-            for connection in data.get(node):
-                if connection not in marked:
-                    marked.append(connection)
-                    working_file.append(connection)
-        """
-
-        while working_file:
-            node = working_file[0]
-            for connection in data.get(node):
-                if connection not in marked:
-                    marked.append(connection)
-                    working_file.append(connection)
-            #print(f"working file: {working_file}")
-            #print(f"marked: {marked}")
-            #print(f"result: {result}")
-            result.append(node)
-            working_file.pop(0)
+        while working_queue:
+            current_node = working_queue.pop(0)
+            node = nodes[current_node]
+            for connection in node.connections:
+                if connection.label not in marked:
+                    marked.append(connection.label)
+                    working_queue.append(connection.label)
+            result.append(current_node)
         return result
-        
-    def parcours_profondeur(starting_point, data):
 
-        marked = []
-        working_file = [starting_point]
+    @staticmethod
+    def parcours_profondeur(starting_node, nodes):
+        marked = set()
+        working_stack = [starting_node]
         result = []
 
-        """
-        #but no its too simple
-        while len(working_file) != 0:
-            node = working_file[0]
-            for connection in data.get(node):
-                if connection not in marked:
-                    marked.append(connection)
-                    #its like i MIGHT just be the goat
-                    working_file.insert(1, connection)
-            #print(f"working file: {working_file}")
-            #print(f"marked: {marked}")
-            #print(f"result: {result}")
-            result.append(node)
-            working_file.pop(0)
-        """
-
-        while working_file:
-            node = working_file.pop()
-            if node not in marked:
-                marked.append(node)
-                result.append(node)
-                for connection in data.get(node):
-                    if connection not in marked:
-                        working_file.append(connection)
+        while working_stack:
+            current_node = working_stack.pop()
+            if current_node not in marked:
+                marked.add(current_node)
+                result.append(current_node)
+                node = nodes[current_node]
+                for connection in node.connections:
+                    working_stack.append(connection.label)
         return result
-    
 
-    def composantes_connexes_faible(data): 
-
+    @staticmethod
+    def composantes_connexes_faible(nodes):
         result = []
-        for node in data:
-            if node not in [item for sublist in result for item in sublist]:
-                #sum(result, [])
-                component = Algorithms.parcours_profondeur(node, data)
+        visited = set()
+
+        for node_label, node in nodes.items():
+            if node_label not in visited:
+                component = Algorithms.parcours_profondeur(node.label, nodes)
                 result.append(component)
+                visited.update(component)
         return result
 
+    #TODO: refactor this
     def tritopologie(data):
         levels = []
         total_nodes = list(data.keys())
@@ -91,3 +65,7 @@ class Algorithms:
                 total_nodes.remove(node)
                 del data[node]
         return(levels)
+
+
+
+

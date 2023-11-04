@@ -1,6 +1,9 @@
 class Helper:
-    def taille(data):
-        return sum(len(data[node]) for node in data)
+    
+    @staticmethod
+    def taille(nodes):
+        return sum(len(node.connections) for node in nodes.values())
 
-    def ordre(data):
-        return(len(data))
+    @staticmethod
+    def ordre(nodes):
+        return len(nodes)

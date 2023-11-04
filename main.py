@@ -8,7 +8,7 @@ import json
 json_file = 'data.json'
 
 #TODO: Fortement connexe
-#TODO: values, 8, 9, 10, 11 (what the fuck does this mean)
+#TODO: valued graph
 
 #{"A": ["B", "C", "F"], "B": ["F"], "C": ["D"], "D": ["F", "E"], "E": ["F"], "F": ["G"], "G": []}
 #{"A": ["B", "C"], "B": ["D"], "C": ["F"], "D": [], "F": []}
@@ -37,16 +37,14 @@ if __name__ == "__main__":
     #NodeManager.add_node("W", ["A"], graph)
     #NodeManager.delete_node("F", graph)
     #NodeManager.delete_connection("G", "R", graph)
-    #ConsoleDisplay.display_basic(graph)  
-    #ConsoleDisplay.display_matrix(graph) 
-    print(nodes)
+    #print(nodes)
     #ConsoleDisplay.display_matrix_ow(nodes)   
-    #print(f'ordre: {Helper.ordre(graph)}')
-    #print(f'taille: {Helper.taille(graph)}')
-    #print(Algorithms.parcours_largeur('A', graph))
-    #print(Algorithms.parcours_profondeur('A', graph))
-    #print(Algorithms.composantes_connexes_faible(graph))
-    #print(Algorithms.tritopologie(graph))
+    #print(f'ordre: {Helper.ordre(nodes)}')
+    #print(f'taille: {Helper.taille(nodes)}')
+    #print(Algorithms.parcours_largeur('A', nodes))
+    #print(Algorithms.parcours_profondeur('A', nodes))
+    #print(Algorithms.composantes_connexes_faible(nodes))
+    print(Algorithms.tritopologie(nodes))
 
     """
     with open(json_file, 'w') as file:
