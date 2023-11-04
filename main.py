@@ -31,8 +31,9 @@ if __name__ == "__main__":
     #print(Algorithms.parcours_largeur('A', graph))
     #print(Algorithms.parcours_profondeur('A', graph))
     #print(Algorithms.composantes_connexes_faible(graph))
-    Algorithms.tritopologie(graph)
+    print(Algorithms.tritopologie(graph))
 
-"""
+    """
     with open(json_file, 'w') as file:
-        json.dump(graph, file)"""
+        json.dump(graph, file)
+    """

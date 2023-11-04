@@ -90,4 +90,4 @@ class Algorithms:
             for node in nodes_list:
                 total_nodes.remove(node)
                 del data[node]
-        print(levels)
+        return(levels)
