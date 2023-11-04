@@ -8,7 +8,6 @@ import json
 json_file = 'data.json'
 
 #TODO: Fortement connexe
-#TODO: valued graph
 
 #{"A": ["B", "C", "F"], "B": ["F"], "C": ["D"], "D": ["F", "E"], "E": ["F"], "F": ["G"], "G": []}
 #{"A": ["B", "C"], "B": ["D"], "C": ["F"], "D": [], "F": []}
@@ -28,17 +27,14 @@ if __name__ == "__main__":
         node = Node(node_label)
         nodes[node_label] = node
 
-    # Next, add connections
     for node_label, connections in data.items():
-        for connection in connections:
-            nodes[node_label].add_connection(nodes[connection])
+        for connection_label, weight in connections:
+            nodes[node_label].add_connection(nodes[connection_label], weight)
 
-
-    #NodeManager.add_node("W", ["A"], graph)
     #NodeManager.delete_node("F", graph)
     #NodeManager.delete_connection("G", "R", graph)
     #print(nodes)
-    #ConsoleDisplay.display_matrix_ow(nodes)   
+    ConsoleDisplay.display_matrix_ow(nodes)   
     #print(f'ordre: {Helper.ordre(nodes)}')
     #print(f'taille: {Helper.taille(nodes)}')
     #print(Algorithms.parcours_largeur('A', nodes))
